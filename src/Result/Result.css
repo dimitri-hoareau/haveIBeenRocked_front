@@ -1,0 +1,29 @@
+.compromised {
+    font-size: 2rem;
+    padding: 3rem;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background: #ff0505;
+    color: white;
+}
+
+.uncompromised {
+    font-size: 2rem;
+color: #2fbf2f;
+}
+
+.anssi-txt {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+ul li {
+    margin-bottom: 0.25rem;
+}

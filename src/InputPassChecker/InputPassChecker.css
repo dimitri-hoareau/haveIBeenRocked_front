@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+form input {
+    flex: 3;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid lightgray;
+}
+
+form button {
+    flex: 1;
+    color: white;
+    background-color: rgb(117, 35, 35);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s ease-in-out;
+}
+
+form button:active {
+    transform: scale(0.95);
+}
