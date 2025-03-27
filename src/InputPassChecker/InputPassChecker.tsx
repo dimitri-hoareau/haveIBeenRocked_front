@@ -1,19 +1,30 @@
-import { useState } from 'react';
+import { JSX } from 'react';
 import './InputPassChecker.css'
 
-function InputPassChecker({onSetResult, onSetRecommendations, onSetIsPasswordCompromised}) {
+interface InputPassCheckerProps {
+  onSetResult: (value: boolean) => void;
+  onSetRecommendations: (value: string[]) => void;
+  onSetIsPasswordCompromised: (value: boolean) => void;
+}
 
-  const displayResult = (data) => {
+interface CheckPasswordResponse {
+  compromised: boolean;
+  recommendations: string[];
+}
+
+function InputPassChecker({ onSetResult, onSetRecommendations, onSetIsPasswordCompromised }: InputPassCheckerProps): JSX.Element {
+
+  const displayResult = (data : CheckPasswordResponse) : void => {
     onSetResult(true)
     onSetIsPasswordCompromised(data.compromised)
     onSetRecommendations(data.recommendations)
   }
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    const form = e.target;
+    const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const password = formData.get('password');
 
@@ -28,7 +39,7 @@ function InputPassChecker({onSetResult, onSetRecommendations, onSetIsPasswordCom
       });
   
       if (response.ok) {
-        const data = await response.json();
+        const data : CheckPasswordResponse = await response.json();
         displayResult(data)
 
       } else {
